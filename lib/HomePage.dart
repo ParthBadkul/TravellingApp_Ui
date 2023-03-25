@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // const HomePage({super.key});
   int _selectedIndex = 0;
+  int _currentTab = 0;
 
   List<IconData> _icon = [
     FontAwesomeIcons.plane,
@@ -48,10 +49,10 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: ListView(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: ListView(
           primary: true,
           scrollDirection: Axis.vertical,
           padding: EdgeInsets.symmetric(vertical: 30),
@@ -87,11 +88,41 @@ class _HomePageState extends State<HomePage> {
               height: 25,
             ),
             Container(
-              height: 380,
+              height: 350,
               child: TopHotels(),
             )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentTab,
+        onTap: ((int value) {
+          setState(() {
+            _currentTab = value;
+          });
+        }),
+        items: const [
+          BottomNavigationBarItem(
+              tooltip: "Search",
+              icon: Icon(
+                Icons.search,
+                size: 30,
+              ),
+              label: "  "),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.local_pizza_rounded,
+                size: 30,
+              ),
+              label: "  "),
+          BottomNavigationBarItem(
+              icon: CircleAvatar(
+                radius: 15.0,
+                backgroundImage: NetworkImage(
+                    'https://cdn.pixabay.com/photo/2015/06/02/12/59/book-794978_960_720.jpg'),
+              ),
+              label: "  ")
+        ],
       ),
     );
   }

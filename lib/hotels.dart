@@ -65,87 +65,92 @@ class TopHotels extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: hotels.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.only(right: 10),
-                    child: (Card(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        // color: Color.fromARGB(255, 168, 13, 13),
-                        margin: EdgeInsets.all(2),
-                        // padding: EdgeInsets.all(3),
-                        height: 200,
-                        width: 180,
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
+                  return GestureDetector(
+                    onTap: () {
+                      print(hotels[index].name);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(right: 10),
+                      child: (Card(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          // color: Color.fromARGB(255, 168, 13, 13),
+                          margin: EdgeInsets.all(2),
+                          // padding: EdgeInsets.all(3),
+                          height: 200,
+                          width: 180,
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    boxShadow: [
+                                      BoxShadow(blurRadius: 05),
+                                    ]),
+
+                                width: 180,
+
+                                // padding: EdgeInsets.all(10),
+                                height: 180,
+
+                                child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(blurRadius: 05),
-                                  ]),
-
-                              width: 180,
-
-                              // padding: EdgeInsets.all(10),
-                              height: 180,
-
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  hotels[index].imageUrl,
-                                  fit: BoxFit.cover,
+                                  child: Image.asset(
+                                    hotels[index].imageUrl,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 8, top: 10),
-                              child: Text(
-                                hotels[index].name,
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 1.2),
+                              Container(
+                                margin: EdgeInsets.only(left: 8, top: 10),
+                                child: Text(
+                                  hotels[index].name,
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 1.2),
+                                ),
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 180,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text('PRICE',
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: 180,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text('PRICE',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                                letterSpacing: 1.3)),
+                                        Spacer(),
+                                        Text(
+                                          '₹${hotels[index].price.toString()}',
                                           style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                              letterSpacing: 1.3)),
-                                      Spacer(),
-                                      Text(
-                                        '₹${hotels[index].price.toString()}',
-                                        style: TextStyle(
-                                          fontSize: 13,
-                                          letterSpacing: 1.5,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.greenAccent,
+                                            fontSize: 13,
+                                            letterSpacing: 1.5,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.greenAccent,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  Text(hotels[index].address),
-                                ],
-                              ),
-                            )
-                          ],
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Text(hotels[index].address),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    )),
+                      )),
+                    ),
                   );
                 },
               ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hey/models/destination_model.dart';
 import 'package:hey/models/hotel_model.dart';
 import 'package:hey/models/activity_model.dart';
+import 'Destination_Screen.dart';
 
 class DestinationCoursel extends StatelessWidget {
   const DestinationCoursel({super.key});
@@ -44,7 +45,7 @@ class DestinationCoursel extends StatelessWidget {
         ),
         Container(
           padding: EdgeInsets.only(left: 5, right: 15),
-          height: 300,
+          height: 330,
           // color: Colors.amber,
           child: ListView.builder(
             itemCount: destinations.length,
@@ -52,7 +53,9 @@ class DestinationCoursel extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  print(destinations[index].city);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return DestinationScreen(destination: destinations[index]);
+                  }));
                 },
                 child: Card(
                   margin: EdgeInsets.all(10),
@@ -80,15 +83,34 @@ class DestinationCoursel extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            child: Text(
-                              destinations[index].city,
-                              style: TextStyle(
-                                  letterSpacing: 1.2,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.bold),
+                            padding: EdgeInsets.only(
+                                bottom: 15, left: 05, top: 5, right: 5),
+                            child: Column(
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  destinations[index].city,
+                                  style: TextStyle(
+                                      letterSpacing: 1.2,
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 130,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(left: 6),
+                                  margin: EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    destinations[index].country,
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white70),
+                                  ),
+                                )
+                              ],
                             ),
-                            padding:
-                                EdgeInsets.only(bottom: 15, left: 5, top: 5),
                           ),
                           Spacer(),
                           Container(

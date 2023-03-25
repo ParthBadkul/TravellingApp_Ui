@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hey/header.dart';
 import 'HomePage.dart';
+import 'Destination_Screen.dart';
+import 'models/destination_model.dart';
 
 void main() {
   runApp(const MyApp());
