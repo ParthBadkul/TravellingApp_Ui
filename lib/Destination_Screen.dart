@@ -15,6 +15,14 @@ class DestinationScreen extends StatefulWidget {
 }
 
 class _DestinationScreenState extends State<DestinationScreen> {
+  Text buildRating(int rating) {
+    String stars = '';
+    for (int i = 0; i < rating; i++) {
+      stars += '⭐ ';
+    }
+    return Text(stars);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -239,8 +247,10 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                             child: Text(
                                               "₹ ${activity.price * 80}",
                                               style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                                color: Colors.greenAccent,
+                                              ),
                                             ),
                                           ),
                                           Container(
@@ -277,8 +287,78 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                       left: 4,
                                     ),
                                     padding: EdgeInsets.all(5),
-                                    child: Text('Raiting'),
+                                    child: buildRating(activity.rating),
                                   ),
+                                  SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.height / 50,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        margin: EdgeInsets.only(
+                                          top: 10,
+                                          left: 8,
+                                        ),
+                                        // padding:
+                                        // EdgeInsets.only(left: 15, top: 5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.green[100],
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        width: 60,
+                                        height: 30,
+                                        child: Text(
+                                          activity.startTimes.first,
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        margin: EdgeInsets.only(
+                                          top: 10,
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          "-",
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        margin: EdgeInsets.only(
+                                          top: 10,
+                                          left: 8,
+                                        ),
+                                        // padding:
+                                        // EdgeInsets.only(left: 15, top: 5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.green[100],
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        width: 60,
+                                        height: 30,
+                                        child: Text(
+                                          activity.startTimes.last,
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               )
                             ],

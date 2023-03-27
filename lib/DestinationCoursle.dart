@@ -66,7 +66,7 @@ class DestinationCoursel extends StatelessWidget {
                         width: 180,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: Colors.amber,
+                            // color: Colors.amber,
                             boxShadow: [
                               BoxShadow(blurRadius: 05),
                             ]),
@@ -128,7 +128,7 @@ class DestinationCoursel extends StatelessWidget {
                           ),
                           Container(
                             width: 180,
-                            color: Colors.amber,
+                            // color: Colors.amber,
                           ),
                           FittedBox(
                             fit: BoxFit.contain,
